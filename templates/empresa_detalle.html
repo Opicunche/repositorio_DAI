@@ -1,0 +1,13 @@
+
+		 <table>
+                        <tr><td> Codigo </td><td> Rut  </td><td> Nombre Contacto </td> <td> email contacto </td><td> telefono</td></tr>
+                        {% for contacto in contactos%}
+                            <tr>
+                                <td> {{contacto["codigoEmpresa"]}} </td>
+                                <td> {{contacto["rutContacto"]}} </td>
+                                <td> {{contacto["nombreContacto"]}} </td>
+                                <td> {{contacto["emailContacto"]}} </td>
+                                <td> {{contacto["telefonoContacto"]}} </td>
+                            </tr>
+                        {% endfor%}
+        </table>

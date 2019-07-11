@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+		<div class="container">
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+  <!-- Brand/logo -->
+  <a class="navbar-brand" href="#">
+    <img src="../img/minis.png" alt="logo" style="width:40px;">   Instituto de salud pública ISP
+  </a>
+  <ul class="navbar-nav ml-auto">
+    <li class="nav-item">
+      <a class="nav-link" href="inicio.html">Inicio</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="registroClientes.html">Cliente</a>
+    </li>
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+        Intranet
+      </a>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" href="registroContacto.html">Registrar contacto</a>
+        <a class="dropdown-item" href="registroEmpresa.html">Registrar Empresa</a>
+        <a class="dropdown-item" href="registroParticular.html">Registrar Particular</a>
+        <a class="dropdown-item" href="registroMuestra.html">Registrar Muestra</a>
+      </div>
+    </li>
+  </ul>
+  </ul>
+    </nav>
+  </div>
+  
+	<br>
+<div class="container text-center">
+
+ 
+
+    <div class="row">
+      <div class="col-sm-3 col-md-6">
+      <label for="codigo" class="mr-sm-2"> Codigo del Cliente :</label>
+      <input type="number" class="form-control mb-2 mr-sm-2" id="codigo" placeholder="ingrese el codigo">
+
+      </div>
+
+      <div class="col-sm-9 col-md-6">
+      <label for="codmuestra" class="mr-sm-2"> Codigo de la Muestra :</label>
+   
+  <input type="number" class="form-control mb-2 mr-sm-2" id="codmuestra" placeholder="ingrese codigo muestra">
+
+     
+    </div>
+  </div>
+</div>
+
+<table class="table">
+    <thead class="thead-white">
+      <tr>
+        <th>Tipo de Análisis</th>
+        <th></th>
+        <th>PPM Muestra</th>
+      </tr>
+    </thead>
+
+    <br>
+    <tbody>
+      <tr>
+        <td>ejemplo1</td>
+        <td></td>
+        <td><input class="col-5" type="text" class="form-control" requiered="required" name="" id="" aria-describedby="helpId" placeholder=""
+                                            required="required"></td>
+      </tr>
+      <tr>
+        <td>ejemplo2</td>
+        <td></td>
+        <td><input class="col-5" type="text" class="form-control" requiered="required" name="" id="" aria-describedby="helpId" placeholder=""
+                                            required="required"></td>
+      </tr>
+      
+     
+    </tbody>
+    
+  </table>
+  <input type="submit" class="btn btn-primary" value="Guardar Análisis ">
+
+</body>
+</html>

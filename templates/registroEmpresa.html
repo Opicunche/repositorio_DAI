@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+  	<meta name="viewport" content="width=device-width, initial-scale=1">
+  	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+ 	 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+ 	 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+ 	 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+	 <div class="container">
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+  <!-- Brand/logo -->
+  <a class="navbar-brand" href="#">
+    <img src="../img/minis.png" alt="logo" style="width:40px;">   Instituto de salud pública ISP
+  </a>
+  <ul class="navbar-nav ml-auto">
+    <li class="nav-item">
+      <a class="nav-link" href="inicio.html">Inicio</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="registroClientes.html">Cliente</a>
+    </li>
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+        Intranet
+      </a>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" href="registroContacto.html">Registrar contacto</a>
+        <a class="dropdown-item" href="registroEmpresa.html">Registrar Empresa</a>
+        <a class="dropdown-item" href="registroParticular.html">Registrar Particular</a>
+        <a class="dropdown-item" href="registroMuestra.html">Registrar Muestra</a>
+      </div>
+    </li>
+  </ul>
+  </ul>
+    </nav>
+  </div>
+	
+<div class="container text-left">
+  <div class="jumbotron">
+  <div class="row">
+
+                <div class="col-5 container-fluid">
+                <img src="../img/salud12.jpg" class="float-left">
+                </div>
+                <div class="col-4 container text-center">
+                    <div class="container">
+                         <h2 class="mr-sm-2">Registrar Empresa</h2>
+                        <h4 class="mr-sm-2">Datos de su empresa</h4>
+                        <br>
+
+                        <form>
+
+                            <center>
+
+                            	<tr>
+
+                                    <td>
+                                        <input type="text" class="form-control" id="codigoEmpresa" placeholder="Ingrese Codigo Empresa"
+                                            required="required">
+                                    </td>
+                                </tr>
+                                <br>
+
+                                <tr>
+
+                                    <td>
+                                        <input type="text" class="form-control" id="rutEmpresa" placeholder="Ingrese rut"
+                                            required="required">
+                                    </td>
+                                </tr>
+                                <br>
+
+                                <tr>
+
+                                    <td>
+                                        <input type="text" class="form-control" id="nombreEmpresa" placeholder="Ingrese nombre"
+                                            required="required">
+                                    </td>
+                                </tr>
+
+                                <br>
+
+                                <tr>
+
+                                    <td>
+                                        <input type="text" class="form-control" id="passwordEmpresa" placeholder="Ingrese password"
+                                            required="required">
+                                    </td>
+                                </tr>
+                                <br>
+                                <tr>
+
+                                    <td>
+                                        <input type="text" class="form-control" id="direccionEmpresa" placeholder="Ingrese Direccion"
+                                            required="required">
+                                    </td>
+                                </tr>
+
+                                <br>
+                                
+                                <p></p>
+                             <input type="button" id="agregar" class="col-10 btn btn-primary" value="Agregar" >
+                             <br>
+                             <br>
+                             <input type="button" id="modificar" class="col-10 btn btn-success" value="Modificar">
+                             <br>
+                             <br>
+                             <input type="button" id="eliminar" class="col-10 btn btn-danger" value="Eliminar">
+                            </center>
+                            
+
+
+
+                        </form>
+                    </div>
+                </div>
+
+                <div id="dvdetalle"> 
+                	<table>
+					<tr><td> Codigo </td><td> Rut </td><td> Nombre </td> <td> password </td><td> direccion</td></tr>
+
+				{% for empresa in empresas%}
+				<tr>
+					<td> {{empresa["codigoEmpresa"]}} </td>
+					<td> {{empresa["rutEmpresa"]}} </td>
+					<td> {{empresa["nombreEmpresa"]}} </td>
+					<td> {{empresa["passwordEmpresa"]}} </td>
+					<td> {{empresa["direccionEmpresa"]}} </td>
+					</tr>
+				{% endfor%}
+					</table>
+					  	              	
+                </div>
+
+                <div class="col-4">
+  </div> 
+</div>
+
+</body>
+</html>
+<script>
+	$(document).ready(function(){
+		$.ajax({
+			url:'/detalleEmpresas',
+			type: 'get',
+			success: function(data){
+				$('#dvdetalle').html(data);
+			}
+		});
+	});
+$("#agregar").click(function(){
+	$.post("/actempresa",
+			{   codigoEmpresa: $("#codigoEmpresa").val(),
+				rutEmpresa: $("#rutEmpresa").val(),
+				nombreEmpresa: $("#nombreEmpresa").val(),
+				passwordEmpresa: $("#passwordEmpresa").val(),
+				direccionEmpresa: $("#direccionEmpresa").val(),
+					operacion: "grabar"	
+			},
+		function(data,status){
+			if(status =="success"){
+				$("#dvdetalle").html(data);
+			}
+		});
+			
+	});
+
+$("#modificar").click(function(){
+	$.post("/actempresa",
+			{  codigoEmpresa: $("#codigoEmpresa").val(),
+			   rutEmpresa: $("#rutEmpresa").val(),
+			   nombreEmpresa: $("#nombreEmpresa").val(),
+			   passwordEmpresa: $("#passwordEmpresa").val(),
+			   direccionEmpresa: $("#direccionEmpresa").val(),
+			   		operacion: "modificar"
+
+			},
+		function(data,status){
+			if(status == "success"){
+				$("#dvdetalle").html(data);
+			}
+		});	
+});
+
+$("#eliminar").click(function(){
+	$.post("/actempresa",
+			{
+				codigoEmpresa: $("#codigoEmpresa").val(),
+					operacion: "eliminar"
+			},
+			function(data,status){
+				if(status == "success"){
+					$("#dvdetalle").html(data);
+				}
+			});		
+});
+</script>
